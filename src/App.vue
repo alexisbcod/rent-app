@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="!$store.state.isView" class="top-bar-container">
+    <div v-if="$route.name!=='View'" class="top-bar-container">
       <div class="top-bar-content">
         <div class="top-bar-img">
           <img
@@ -23,8 +23,10 @@
         </div>
       </div>
     </div>
+
     <router-view />
-    <div v-if="!$store.state.isView" class="navbar-container">
+
+    <div v-if="$route.name!=='View'" class="navbar-container">
       <div class="navbar-content">
         <router-link to="/"><i class="bx-sm bx bx-home-alt"></i></router-link>
         <router-link to="/test1"><i class="bx-sm bx bx-heart"></i></router-link>
