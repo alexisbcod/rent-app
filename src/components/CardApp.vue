@@ -1,8 +1,8 @@
 <template>
-  <div class="card">
+  <div @click="$emit('click')" class="card">
     <div class="card-content">
       <div class="tag-card">
-        <i class="bx bx-current-location"></i>Los Angeles CA
+        <i class="bx bx-current-location"></i>{{location}}
       </div>
       <div class="footer-card">
         <div class="action">
@@ -21,9 +21,9 @@
                 <div class="username">{{ username }}</div>
               </div>
               <div class="starts">
-                <span><i class="bx bxs-star"></i></span>
-                <span><i class="bx bxs-star"></i></span>
-                <span><i class="bx bxs-star"></i></span>
+                <span :key="index" v-for="(item, index) in parseInt(start)"
+                  ><i class="bx bxs-star"></i
+                ></span>
                 <small>{{ start }} Starts</small>
               </div>
             </div>
@@ -69,12 +69,12 @@
         right: 10%;
         z-index: 3000;
         button {
-          &:hover{
+          &:hover {
             transform: translate(0, 2px);
           }
           font-size: 1rem;
           cursor: pointer;
-          transition: all .25s ease;
+          transition: all 0.25s ease;
           box-shadow: 0px 10px 20px -2px rgba(15, 17, 26, 0.25);
           border: none;
           outline: none;
@@ -232,6 +232,13 @@ export default {
       type: String,
       default: 0,
     },
+    location: {
+      type: String,
+      default: "Not found"
+    }
+  },
+  created() {
+    console.log(this.start);
   },
 };
 </script>

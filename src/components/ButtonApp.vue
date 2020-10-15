@@ -16,6 +16,7 @@ export default {
 </script>
 <style lang="less" scoped>
 button {
+  cursor: pointer;
   padding: 10px 15px;
   border: none;
   outline: none;

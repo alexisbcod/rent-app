@@ -57,7 +57,7 @@
           </div>
         </div>
         <div class="options-view">
-          <button>
+          <button class="selected">
             <i class="bx bx-info-circle bx-sm"></i>
             <span>Information</span>
           </button>
@@ -76,18 +76,7 @@
         </div>
         <div class="description-view">
           <p>Description</p>
-          <small
-            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-            nisi ducimus ipsum, molestias quos minima in velit pariatur ut,
-            repudiandae magnam cum. Id ipsa dolores mollitia voluptate inventore
-            consequuntur provident.</small
-          >
-          <small
-            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-            nisi ducimus ipsum, molestias quos minima in velit pariatur ut,
-            repudiandae magnam cum. Id ipsa dolores mollitia voluptate inventore
-            consequuntur provident.</small
-          >
+          <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam illum at illo non magni explicabo quam accusamus amet! Temporibus atque odit reiciendis cupiditate natus dolores voluptas consequatur tenetur fuga repellat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto in consequatur earum qui aperiam quo ducimus beatae accusamus fugiat voluptates? Laudantium exercitationem amet eligendi repellat, odit quia sint voluptate quibusdam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias modi placeat maiores nobis beatae voluptatum aspernatur facere dolore, repudiandae aperiam numquam assumenda odio porro earum dolores eum eius harum expedita. Josué</small>
         </div>
       </div>
     </div>
@@ -128,14 +117,17 @@ export default {
     }
   }
   .view-text {
-    width: 90%;
-    height: 60%;
+    width: 100%;
+    height: 50%;
     .view-text-content {
-      height: 30%;
+      padding: 20px;
+      overflow: auto;
+      height: 100%;
       .description-view {
-        overflow: auto;
-        height: 100%;
+        //overflow: auto;
+        //height: 110%;
         margin-top: 10px;
+        margin-bottom: 20%;
         p {
           font-weight: bold;
           color: rgba(31, 63, 95);
@@ -146,9 +138,9 @@ export default {
         }
       }
       .options-view {
-        padding: 10px 0;
-        display: flex;
-        justify-content: space-between;
+        padding: 10px 0px;
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
         margin-top: 5px;
         button {
           border: none;
@@ -159,10 +151,10 @@ export default {
           align-items: center;
           font-weight: bold;
           color: rgba(164, 179, 192);
-          span{
+          span {
             margin-top: 3px;
           }
-          &:hover {
+          &.selected {
             color: rgba(70, 208, 218);
             i {
               color: rgba(70, 208, 218);
@@ -205,7 +197,6 @@ export default {
             height: 44px;
             border-radius: 25px;
             overflow: hidden;
-            margin-right: 40px;
             img {
               object-fit: cover;
               width: 100%;
@@ -220,13 +211,13 @@ export default {
     border-radius: 25px;
     background-color: #fff;
     margin-top: 45vh;
-    padding: 20px;
   }
   .img-header {
     width: 100%;
     height: 50vh;
     position: fixed;
     top: 0;
+    z-index: 0;
     .icons {
       position: fixed;
       width: 100%;
