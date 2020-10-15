@@ -3,7 +3,7 @@
     <div class="img-header">
       <div class="icons">
         <div class="icons-container">
-          <div @click="changeState" class="icon">
+          <div class="icon">
             <router-link to="/"><i class="bx bx-chevron-left"></i></router-link>
           </div>
           <div class="text">Available</div>
@@ -57,21 +57,21 @@
           </div>
         </div>
         <div class="options-view">
-          <button class="selected">
+          <button>
             <i class="bx bx-info-circle bx-sm"></i>
-            Information
+            <span>Information</span>
           </button>
           <button>
             <i class="bx bx-comment bx-sm"></i>
-            Comments
+            <span>Comments</span>
           </button>
           <button>
             <i class="bx bx-cookie bx-sm"></i>
-            Offers
+            <span>Offers</span>
           </button>
           <button>
             <i class="bx bx-share-alt bx-sm"></i>
-            Shared
+            <span>Shared</span>
           </button>
         </div>
         <div class="description-view">
@@ -88,7 +88,6 @@
             repudiandae magnam cum. Id ipsa dolores mollitia voluptate inventore
             consequuntur provident.</small
           >
-          HOLAAAA
         </div>
       </div>
     </div>
@@ -106,16 +105,6 @@ import ButtonApp from "@/components/ButtonApp.vue";
 export default {
   components: {
     ButtonApp,
-  },
-  created() {
-    this.$store.state.isView = true;
-    console.log(this.$store.state.isView);
-  },
-  methods: {
-    changeState() {
-      this.$store.state.isView = false;
-      console.log(this.$store.state.isView);
-    },
   },
 };
 </script>
@@ -146,7 +135,7 @@ export default {
       .description-view {
         overflow: auto;
         height: 100%;
-        margin-top: 20px;
+        margin-top: 10px;
         p {
           font-weight: bold;
           color: rgba(31, 63, 95);
@@ -157,9 +146,10 @@ export default {
         }
       }
       .options-view {
+        padding: 10px 0;
         display: flex;
         justify-content: space-between;
-        margin-top: 13px;
+        margin-top: 5px;
         button {
           border: none;
           outline: none;
@@ -169,6 +159,9 @@ export default {
           align-items: center;
           font-weight: bold;
           color: rgba(164, 179, 192);
+          span{
+            margin-top: 3px;
+          }
           &:hover {
             color: rgba(70, 208, 218);
             i {
