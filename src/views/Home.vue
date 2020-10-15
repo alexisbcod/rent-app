@@ -23,6 +23,7 @@
       </div>
     </div>
     <CardApp
+      style="margin-top: 10px"
       imgUser="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
       imgCard="https://images.unsplash.com/photo-1564078516393-cf04bd966897?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
       username="Mr.Josue"
@@ -96,6 +97,15 @@ export default {
   name: "Home",
   components: {
     CardApp,
+  },
+  created() {
+    this.$store.state.isView = false
+    console.log(this.$store.state.isView)
+  },
+  methods: {
+    redirigir(){
+      this.$router.push('/view')
+    }
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="top-bar-container">
+    <div v-if="!$store.state.isView" class="top-bar-container">
       <div class="top-bar-content">
         <div class="top-bar-img">
           <img
@@ -24,7 +24,7 @@
       </div>
     </div>
     <router-view />
-    <div class="navbar-container">
+    <div v-if="!$store.state.isView" class="navbar-container">
       <div class="navbar-content">
         <router-link to="/"><i class="bx-sm bx bx-home-alt"></i></router-link>
         <router-link to="/test1"><i class="bx-sm bx bx-heart"></i></router-link>
@@ -121,7 +121,7 @@
   font-family: "Rubik";
   font-style: normal;
   -webkit-tap-highlight-color: transparent;
-  user-select: none; 
+  user-select: none;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -142,7 +142,7 @@
     }
   }
 }
-body{
+body {
   background-color: rgba(248, 251, 255);
 }
 </style>
