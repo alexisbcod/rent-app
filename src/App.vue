@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    
+
     <router-view />
 
     <div v-if="$route.name!=='View'" class="navbar-container">
