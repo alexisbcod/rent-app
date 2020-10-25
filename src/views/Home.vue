@@ -25,17 +25,8 @@
       </div>
     </div>
     <CardApp
-      @click="redirect('/view')"
-      style="margin-top: 10px"
-      imgUser="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-      imgCard="https://images.unsplash.com/photo-1564078516393-cf04bd966897?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
-      username="Mr.Josue"
-      start="3"
-      location="San Salvador"
-      price="400"
-      title="Special House Mix"
-      :key="index"
-      v-for="(item, index) in 10"
+      @click="redirect(`/view`)"
+      :dptos="dptos"
     />
     <div style="margin-bottom: 60px"></div>
   </div>
@@ -111,13 +102,21 @@
 <script>
 // @ is an alias to /src
 import CardApp from "@/components/CardApp.vue";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Home",
   components: {
     CardApp,
   },
+  created() {
+    this.getDpto();
+  },
+  computed: {
+    ...mapState("dptosNamespace", ["dptos"])
+  },
   methods: {
+    ...mapActions("dptosNamespace", ["getDpto"]),
     redirect(parameter) {
       this.$router.push(parameter);
     },
