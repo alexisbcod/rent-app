@@ -1,16 +1,13 @@
 <template>
   <div id="app">
-    <div v-if="$route.name !== 'View'" class="top-bar-container">
+    <div v-if="$route.name !== 'View' && $route.name !== 'Login'" class="top-bar-container">
       <div class="top-bar-content">
         <div class="top-bar-img">
-          <img
-            src="https://images.unsplash.com/photo-1602046746754-5c45e4a04c8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-            alt=""
-          />
+          <img :src="$store.state.userInformation ? $store.state.userInformation.photoURL : ''" alt="" />
         </div>
         <div class="top-bar-center">
           <i class="bx bx-current-location"></i>
-          Los Angeles CA <i class="bx bxs-chevron-down"></i>
+          San Salvador <!-- <i class="bx bxs-chevron-down"></i> -->
         </div>
         <div class="top-bar-icons">
           <div class="notifi">
@@ -26,7 +23,7 @@
     <transition name="slide-fade">
       <router-view />
     </transition>
-    <div v-if="$route.name !== 'View'" class="navbar-container">
+    <div v-if="$route.name !== 'View' && $route.name !== 'Login'" class="navbar-container">
       <div class="navbar-content">
         <router-link to="/"><i class="bx-sm bx bx-home-alt"></i></router-link>
         <router-link to="/test1"><i class="bx-sm bx bx-heart"></i></router-link>
@@ -40,6 +37,18 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapActions, mapState } from "vuex";
+export default {
+  mounted() {
+    this.validateUser();
+  },
+  methods: {
+    ...mapActions(["validateUser"]),
+  },
+};
+</script>
 
 <style lang="less">
 @import (css)

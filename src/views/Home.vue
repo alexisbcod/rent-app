@@ -32,6 +32,30 @@
   </div>
 </template>
 
+<script>
+import CardApp from "@/components/CardApp.vue";
+
+export default {
+  name: "Home",
+  components: {
+    CardApp,
+  },
+  data() {
+    return {
+      
+    };
+  },
+  mounted() {
+  },
+  methods: {
+    redirect(parameter) {
+      this.$router.push(parameter);
+    },
+  },
+};
+</script>
+
+
 <style lang="less">
 .home {
   z-index: 1000;
@@ -98,6 +122,7 @@
   }
 }
 </style>
+<<<<<<< Updated upstream
 
 <script>
 // @ is an alias to /src
@@ -123,3 +148,5 @@ export default {
   },
 };
 </script>
+=======
+>>>>>>> Stashed changes

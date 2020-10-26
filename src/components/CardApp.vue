@@ -223,7 +223,7 @@ export default {
     dptos: Array,
   },
   created() {
-    console.log(this.start);
+    //console.log(this.start);
   },
   methods: {
       ...mapActions("dptosNamespace", ["guardarDpto"]),

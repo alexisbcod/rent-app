@@ -12,10 +12,20 @@
           </div>
         </div>
       </div>
+<<<<<<< Updated upstream
       <img
         :src="dpto.imgCard"
         alt=""
       />
+=======
+      <div class="img">
+        <swiper ref="mySwiper" :options="swiperOptions">
+          <swiper-slide v-for="(item, index) in images" :key="index"
+            ><img :src="item.src" alt=""
+          /></swiper-slide>
+        </swiper>
+      </div>
+>>>>>>> Stashed changes
     </div>
     <div class="view-text">
       <div class="view-text-content">
@@ -77,7 +87,21 @@
         <div class="description-view">
           <p>Description</p>
           <small
+<<<<<<< Updated upstream
             >{{dpto.description}}</small
+=======
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            illum at illo non magni explicabo quam accusamus amet! Temporibus
+            atque odit reiciendis cupiditate natus dolores voluptas consequatur
+            tenetur fuga repellat. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Architecto in consequatur earum qui aperiam quo
+            ducimus beatae accusamus fugiat voluptates? Laudantium
+            exercitationem amet eligendi repellat, odit quia sint voluptate
+            quibusdam? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Alias modi placeat maiores nobis beatae voluptatum aspernatur facere
+            dolore, repudiandae aperiam numquam assumenda odio porro earum
+            dolores eum eius harum expedita. Josué</small
+>>>>>>> Stashed changes
           >
         </div>
       </div>
@@ -98,9 +122,49 @@ export default {
   components: {
     ButtonApp,
   },
+<<<<<<< Updated upstream
   computed: {
       ...mapState("dptosNamespace", ["dpto"]),
   }
+=======
+  data() {
+    return {
+      swiperOptions: {
+        pagination: {
+          el: ".swiper-pagination",
+        },
+      },
+      images: [
+        {
+          src:
+            "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80",
+        },
+        {
+          src:
+            "https://images.unsplash.com/photo-1558882224-dda166733046?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=749&q=80",
+        },
+        {
+          src:
+            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+        },
+        {
+          src:
+            "https://images.unsplash.com/photo-1564078516393-cf04bd966897?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
+        },
+        {
+          src:
+            "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+        },
+      ],
+    };
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.$swiper;
+    },
+  },
+  methods: {},
+>>>>>>> Stashed changes
 };
 </script>
 
@@ -227,6 +291,7 @@ export default {
     .icons {
       position: fixed;
       width: 100%;
+      z-index: 1000;
       .icons-container {
         display: flex;
         justify-content: space-between;
@@ -253,11 +318,30 @@ export default {
         }
       }
     }
-    img {
-      object-fit: cover;
-      width: 100%;
+    .img {
       height: 100%;
+      .swiper-container {
+        height: 100%;
+        width: 100%;
+        .swiper-wrapper {
+          height: 100%;
+          width: 100%;
+          .swiper-slide {
+            height: 100%;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
     }
+    // // .img {
+    //   object-fit: cover;
+    //   width: 100%;
+    //   height: 50px !important;
+    // // }
   }
 }
 </style>
