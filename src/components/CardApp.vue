@@ -1,61 +1,72 @@
 <template>
-  <div @click="$emit('click')" class="card">
-    <div class="card-content">
-      <div class="tag-card">
-        <i class="bx bx-current-location"></i>{{location}}
-      </div>
-      <div class="footer-card">
-        <div class="action">
-          <button><i class="bx bx-heart"></i></button>
+  <div>
+    <div
+      v-for="(dpto, index) in dptos"
+      :key="index"
+      @click="click(dpto)"
+      class="card"
+    >
+      <div class="card-content">
+        <div class="tag-card">
+          <i class="bx bx-current-location"></i>{{ dpto.location }}
         </div>
-        <div class="footer-card-content">
-          <div class="footer-card-left">
-            <div class="title">
-              <h3>{{ title }}</h3>
-            </div>
-            <div class="user">
-              <div class="content-user">
-                <div class="img-content">
-                  <img :src="imgUser" alt="" />
+        <div class="footer-card">
+          <div class="action">
+            <button><i class="bx bx-heart"></i></button>
+          </div>
+          <div class="footer-card-content">
+            <div class="footer-card-left">
+              <div class="title">
+                <h3>{{ dpto.title }}</h3>
+              </div>
+              <div class="user">
+                <div class="content-user">
+                  <div class="img-content">
+                    <img :src="dpto.imgUser" alt="" />
+                  </div>
+                  <div class="username">{{ dpto.username }}</div>
                 </div>
-                <div class="username">{{ username }}</div>
-              </div>
-              <div class="starts">
-                <span :key="index" v-for="(item, index) in parseInt(start)"
-                  ><i class="bx bxs-star"></i
-                ></span>
-                <small>{{ start }} Starts</small>
+                <div class="starts">
+                  <span :key="index" v-for="(item, index) in dpto.start"
+                    ><i class="bx bxs-star"></i
+                  ></span>
+                  <small>{{ dpto.start }} Starts</small>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="footer-card-right">
-            <div class="price">
-              <p>${{ price }} usd</p>
-            </div>
-            <div class="rooms">
-              <div class="rooms-items">
-                <i class="bx bx-bed"></i>
-                2
+            <div class="footer-card-right">
+              <div class="price">
+                <p>USD {{ dpto.price }}</p>
               </div>
-              <div class="rooms-items">
-                <i class="bx bx-bath"></i>
-                2
-              </div>
-              <div class="rooms-items">
-                <i class="bx bx-cloud-light-rain"></i>
-                2
+              <div class="rooms">
+                <div class="rooms-items">
+                  <i class="bx bx-bed"></i>
+                  {{ dpto.bed_rooms }}
+                </div>
+                <div class="rooms-items">
+                  <i class="bx bx-bath"></i>
+                  {{ dpto.bath_rooms }}
+                </div>
+                <div v-if="dpto.wifi" class="rooms-items">
+                  <i class="bx bx-cloud-light-rain"></i>
+                </div>
+                <div class="rooms-items">
+                  <i class="bx bx-cloud-light-rain"></i>
+                  {{ dpto.mts }}
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <img :src="dpto.imgCard" alt="" />
       </div>
-      <img :src="imgCard" alt="" />
     </div>
   </div>
 </template>
 
 <style lang="less" scoped>
 .card {
+    margin-top: 10px;
   .card-content {
     box-shadow: 0px 5px 10px -2px rgba(74, 54, 251, 0.2);
     .footer-card {
@@ -205,40 +216,21 @@
 </style>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "CardApp",
   props: {
-    title: {
-      type: String,
-      default: "Not Found",
-    },
-    imgUser: {
-      type: String,
-      defaut: "https://tripisia.id/assets/images/NoImage.png",
-    },
-    imgCard: {
-      type: String,
-      default: "https://tripisia.id/assets/images/NoImage.png",
-    },
-    price: {
-      type: String,
-      default: 0,
-    },
-    username: {
-      type: String,
-      default: "Not found",
-    },
-    start: {
-      type: String,
-      default: 0,
-    },
-    location: {
-      type: String,
-      default: "Not found"
-    }
+    dptos: Array,
   },
   created() {
     console.log(this.start);
   },
+  methods: {
+      ...mapActions("dptosNamespace", ["guardarDpto"]),
+      click(obj) {
+          this.guardarDpto(obj)
+          this.$emit('click');
+      }
+  }
 };
 </script>

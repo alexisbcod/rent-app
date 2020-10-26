@@ -13,7 +13,7 @@
         </div>
       </div>
       <img
-        src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+        :src="dpto.imgCard"
         alt=""
       />
     </div>
@@ -23,14 +23,14 @@
           <div class="left">
             <div class="location">
               <i class="bx bx-current-location"></i>
-              San Salvador
+              {{dpto.location}}
             </div>
-            <div class="title-text">Special House Mix</div>
+            <div class="title-text">{{dpto.title}}</div>
           </div>
           <div class="right">
             <div class="top-bar-img">
               <img
-                src="https://images.unsplash.com/photo-1602046746754-5c45e4a04c8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                :src="dpto.imgUser"
                 alt=""
               />
             </div>
@@ -45,15 +45,15 @@
         <div class="icons-view">
           <div class="rooms-items">
             <i class="bx bx-bed"></i>
-            2
+            {{dpto.bed_rooms}}
           </div>
           <div class="rooms-items">
             <i class="bx bx-bath"></i>
-            2
+            {{dpto.bath_rooms}}
           </div>
           <div class="rooms-items">
             <i class="bx bx-cloud-light-rain"></i>
-            2
+            {{dpto.mts}} mts
           </div>
         </div>
         <div class="options-view">
@@ -76,13 +76,15 @@
         </div>
         <div class="description-view">
           <p>Description</p>
-          <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam illum at illo non magni explicabo quam accusamus amet! Temporibus atque odit reiciendis cupiditate natus dolores voluptas consequatur tenetur fuga repellat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto in consequatur earum qui aperiam quo ducimus beatae accusamus fugiat voluptates? Laudantium exercitationem amet eligendi repellat, odit quia sint voluptate quibusdam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias modi placeat maiores nobis beatae voluptatum aspernatur facere dolore, repudiandae aperiam numquam assumenda odio porro earum dolores eum eius harum expedita. Josué</small>
+          <small
+            >{{dpto.description}}</small
+          >
         </div>
       </div>
     </div>
     <div class="bottom-price">
       <div class="content">
-        <p>$1500 usd</p>
+        <p>USD {{dpto.price}}</p>
         <ButtonApp color="primary">Reserved Now!</ButtonApp>
       </div>
     </div>
@@ -91,10 +93,14 @@
 
 <script>
 import ButtonApp from "@/components/ButtonApp.vue";
+import { mapState } from "vuex";
 export default {
   components: {
     ButtonApp,
   },
+  computed: {
+      ...mapState("dptosNamespace", ["dpto"]),
+  }
 };
 </script>
 
